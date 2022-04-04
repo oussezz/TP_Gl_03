@@ -4,6 +4,8 @@
  */
 package org.emp.gl.gui;
 
+import javax.swing.*;
+
 /**
  *
  * @author sweeffon
@@ -85,6 +87,11 @@ public class ButtonViewer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,7 @@ public interface TimerChangeListener extends PropertyChangeListener{
     final static String HEURE_PROP = "heure" ;
 
 
-    //void propertyChange (String propertyName, Object oldValue, Object newValue) ;
+
+//    void propertyChange (String propertyName, Object oldValue, Object newValue) ;
                   
 }

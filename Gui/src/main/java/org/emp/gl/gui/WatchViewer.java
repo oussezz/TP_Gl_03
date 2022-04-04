@@ -8,6 +8,7 @@ import org.emp.gl.core.lookup.Lookup;
 import org.emp.gl.timer.service.TimerChangeListener;
 import org.emp.gl.timer.service.TimerService;
 
+import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 
 /**
@@ -67,8 +68,24 @@ public class WatchViewer extends javax.swing.JFrame implements TimerChangeListen
     private javax.swing.JLabel hh;
     private javax.swing.JLabel mm;
     private javax.swing.JLabel sep;
+    private javax.swing.JLabel ss;
+    private javax.swing.JLabel sep1;
+    private Boolean isSec=false;
+    public void setIsSec(Boolean b)
+    {
+        this.isSec=b;
+    }
 
+    public void setSs(JLabel ss) {
+        this.ss = ss;
+    }
+    public Boolean getIsSec(){
+        return isSec;
+    }
 
+    public void setSep1(JLabel sep1) {
+        this.sep1 = sep1;
+    }
 
     @Override
     public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
@@ -77,12 +94,23 @@ public class WatchViewer extends javax.swing.JFrame implements TimerChangeListen
         if (propertyChangeEvent.getPropertyName().equals(TimerChangeListener.MINUTE_PROP))
             mm.setText(String.format("%2d", Lookup.getInstance().getService(TimerService.class).getMinutes()));
         if (propertyChangeEvent.getPropertyName().equals(TimerChangeListener.SECONDE_PROP)) {
-            if (Lookup.getInstance().getService(TimerService.class).getSecondes()%2 == 0) {
+            if(isSec)
+                ss.setText(String.format("%2d", Lookup.getInstance().getService(TimerService.class).getSecondes()));
+                if (Lookup.getInstance().getService(TimerService.class).getSecondes()%2 == 0) {
                 sep.setText(":");
+                if(isSec)
+                    sep1.setText(":");
             }
-            else sep.setText("-");
+            else {
+                sep.setText("-");
+                if(isSec)
+                    sep1.setText("-");
+            }
         }
 
     }
+
+
+
     // End of variables declaration//GEN-END:variables
 }
